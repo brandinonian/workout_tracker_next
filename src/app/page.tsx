@@ -12,9 +12,9 @@ export default function Home() {
 
   return (
     <main className="bg-black flex flex-col items-center">
-      <div className="flex flex-col items-center text-center text-slate-300 bg-slate-800 w-5/6">
+      <div className="flex flex-col items-center text-center text-slate-300 bg-slate-800 w-full lg:w-5/6">
         <div className="py-5">
-          <h1 className="text-8xl py-5">Workout Tracker</h1>
+          <h1 className="text-4xl lg:text-8xl py-5">Workout Tracker</h1>
           <p className="text-xl py-5">{now.toLocaleDateString()}</p>
         </div>
 
