@@ -19,18 +19,18 @@ export default function Home() {
         </div>
 
         <div className="flex flex-row space-x-10">
-          <div className="bg-slate-600 p-5 rounded-md shadow-black shadow-sm">
+          <div className="bg-slate-900 p-5 rounded-md shadow-black shadow-sm">
             <h3 className="text-4xl pb-10">Daily</h3>
             <Workout exercises={dailyWorkout.exercises} />
           </div>
 
-          <div className="bg-slate-600 p-5 rounded-md shadow-black shadow-sm">
+          <div className="bg-slate-900 p-5 rounded-md shadow-black shadow-sm">
             <h3 className="text-4xl pb-10">Today</h3>
             <Workout name={todayWorkout.name} exercises={todayWorkout.exercises} />
           </div>
         </div>
 
-        <div className="h-20">Test dev branch</div>
+        <div className="h-20"></div>
       </div>
     </main>
   )

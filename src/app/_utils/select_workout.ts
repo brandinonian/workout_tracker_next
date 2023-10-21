@@ -60,7 +60,7 @@ function SelectWorkout() {
     // return the workout object
     // includes list of exercises
     // e.x.: { name: 'Pull', exercises: [ 'Curl', 'Pull Up', 'Row' ] }
-    return workouts[index];
+    return workouts[index - 2];
 }
 
 export default SelectWorkout;
