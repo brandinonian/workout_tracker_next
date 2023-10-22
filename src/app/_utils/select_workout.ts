@@ -30,10 +30,7 @@ const workouts = [
     }
 ]
 
-function SelectWorkout() {
-
-    // set today's date
-    const now = new Date();
+function SelectWorkout(now: Date) {
 
     // get the day of the week
     // 0 = Sunday, 6 = Saturday
