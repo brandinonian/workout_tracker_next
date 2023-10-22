@@ -10,7 +10,7 @@ export default function Home() {
   var [date,setDate] = useState(new Date());
     
     useEffect(() => {
-        var timer = setInterval(()=>setDate(new Date()), 1000 )
+        var timer = setInterval(()=>setDate(new Date()), 100000 )
         return function cleanup() {
             clearInterval(timer)
         }
