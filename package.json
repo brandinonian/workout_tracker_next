@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@libsql/client": "^0.4.0-pre.2",
     "daisyui": "^3.9.3",
     "next": "13.5.5",
     "react": "^18",
