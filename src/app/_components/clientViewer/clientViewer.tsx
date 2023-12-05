@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from "react"
-import NewExercise from "./newExercise";
+import React, { useEffect, useState } from "react"
 import { ISuggestedExercise } from "@/utils/types";
+import { clearInterval } from "timers";
+import DisplayExercises from "./displayExercises";
+import AddNewExercise from "../addNewExercise/addNewExercise";
 
 const data: ISuggestedExercise[] = [
     {
@@ -30,21 +32,62 @@ const data: ISuggestedExercise[] = [
 
 export default function ClientViewer() {
 
-    const [viewSelection, setViewSelection] = useState(1); // 1 = view, 2 = add
+    const [addNewState, setAddNewState] = useState(1);
+    const [dateState, setDateState] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(dateState);
+    // !! BORKED !!
+    // reset the current date
+    // useEffect(() => {
+    //     const timer = setInterval(() => setDateState(new Date()), 30000);
+    //     return () => {
+    //         clearInterval(timer);
+    //     }
+    // }, []);
+
+    const subtractDay = () => {
+        const newDate = new Date(selectedDate.setDate(selectedDate.getDate() - 1));
+        setSelectedDate(newDate);
+    }
+
+    const addDay = () => {
+        const newDate = new Date(selectedDate.setDate(selectedDate.getDate() + 1));
+        setSelectedDate(newDate);
+    }
 
     return (
-        <div className="flex flex-col items-center bg-zinc-800 text-green-400 p-10 space-y-4">
-            {/**Options */}
+        <div className="bg-zinc-800 border-2 border-zinc-300">
+
             <div>
-                <ul className="flex flex-row space-x-4">
-                    <button onClick={e => setViewSelection(1)}>View</button>
-                    <button onClick={e => setViewSelection(2)}>Add</button>
-                </ul>
+                <p>Today's Date: {dateState.toLocaleDateString('en')}</p>
+            </div>
+
+            {/**Display selected date */}
+            <div>
+                <p>{selectedDate.toLocaleDateString('en')}</p>
+            </div>
+
+            {/**Display forward, back, and add exercise buttons */}
+            <div className="flex flex-row space-x-4">
+                <div>
+                    <button onClick={() => subtractDay()}>{`Back`}</button>
+                </div>
+
+                {/* TODO: Need a way to go back to viewing data */}
+                <div>
+                    <button onClick={() => setAddNewState(2)}>{`Add New`}</button>
+                </div>
+
+                <div>
+                    <button onClick={() => addDay()}>{`Forward`}</button>
+                </div>
             </div>
 
 
-            {/**Display View */}
-            {viewSelection == 2 && <NewExercise suggestedExercises={data}/>}
+
+            {/**Display exercises or add new exercise form */}
+            {(addNewState == 2) && <AddNewExercise />}
+            {/* {(addNewState == 1) && <DisplayExercises date={selectedDate.toLocaleDateString('en')} />} */}
+
         </div>
     )
 }

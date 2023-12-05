@@ -1,4 +1,4 @@
-export interface IExercise {
+export interface ICompletedExercise {
     id: number;
     name: string;
     weight_lbs: number | null;
